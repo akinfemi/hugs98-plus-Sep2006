@@ -8,7 +8,7 @@
 
 .PHONY: all
 
-all: download untar build
+all: download untar
 
 download:
 	@if command -v curl >/dev/null; then \
@@ -25,15 +25,6 @@ untar: download
 		tar -xzf hugs.tar.gz; \
 	else \
 		echo "Error: Tar file not found."; \
-		exit 1; \
-	fi
-
-build: untar
-	@if [ -d hugs98-plus-Sep2006 ]; then \
-		cd hugs98-plus-Sep2006; \
-		make; \
-	else \
-		echo "Error: Untarred folder not found."; \
 		exit 1; \
 	fi
 
